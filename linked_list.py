@@ -16,6 +16,21 @@ class LinkedList:
                 current = current.next
             current.next = new_node
 
+    def delete_node(self, key):
+        current = self.head
+
+        if current and current.data == key:
+            self.head = current.next
+            return
+
+        prev = None
+        while current and current.data != key:
+            prev = current
+            current = current.next
+
+        if current:
+            prev.next = current.next        
+
     def display(self):
         current = self.head
         while current:
@@ -31,3 +46,6 @@ if __name__ == "__main__":
 
     print("Linked List after additions:")
     ll.display()  # Output: 10 -> 20 -> 30 -> None
+    ll.delete_node(20)
+    print("Linked List after deleting 20:")
+    ll.display()
